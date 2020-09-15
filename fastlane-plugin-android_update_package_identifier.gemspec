@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = 'jontnog@gmail.com'
 
   spec.summary       = 'Changes the applicationId inside of your build.gradle file'
-  # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-android_update_package_identifier"
+  spec.homepage      = "https://github.com/LuminousPath/fastlane-plugin-android_update_package_identifier"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)
