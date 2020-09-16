@@ -5,12 +5,12 @@ module Fastlane
   module Actions
     class AndroidUpdatePackageIdentifierAction < Action
       def self.run(params)
-        UI.message("The android_update_package_identifier plugin is working!")
         path = params[:gradleFilePath]
         identifier = params[:newIdentifier]
 
         File.open(path,"r+") do |file|
           text = File.read(file)
+          UI.message("Changing build config at #{path} to have applicationId of #{identifier}")
           new_contents = text.gsub("/(?<=defaultConfig[\s\S]*applicationId.*\").*(?=\")/", identifier)
           file.puts new_contents
         end
