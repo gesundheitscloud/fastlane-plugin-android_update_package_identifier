@@ -11,7 +11,10 @@ module Fastlane
         File.open(path,"r+") do |file|
           text = File.read(file)
           UI.message("Changing build config at #{path} to have applicationId of #{identifier}")
-          new_contents = text.gsub("/(?<=defaultConfig[\s\S]*applicationId.*\").*(?=\")/", identifier)
+          config_contents = text[/defaultConfig (\{(?:\{??[^\{]*?\}))/, 1]
+          new_config_contents = config_contents.gsub(/(?<=applicationId \").*?(?=\")/, identifier)
+          new_contents = text.gsub(config_contents, new_config_contents)
+          puts new_contents
           file.puts new_contents
         end
       end
